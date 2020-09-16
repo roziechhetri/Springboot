@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="empForm" onsubmit="">
+        <label for="empFName">Enter EMP F name:</label>
+        <input type="text" name="empFName" id="empFName" />
+        <label for="empLName">Enter EMP L name:</label>
+        <input type="text" name="empLName" id="empLName" />
+        <label for="empSalary">Enter EMP Salary:</label>
+        <input type="number" name="empSalary" id="empSalary" />
+        <label for="empEmail">Enter EMP email:</label>
+        <input type="email" name="empEmail" id="empEmail" />
+        <button type="submit">Submit EMP</button>
+    </form>
+    <form action="">
+        <label for="departmentID">Enter the Department :</label>
+        <input type="text" name="departmentID" id="departmentID" />
+        <label for="dptName">Enter EMP L name:</label>
+        <input type="text" name="dptName" id="dptName" />
+        <label for="contactNo">Enter ContactNo:</label>
+        <input type="number" name="contactNo" id="contactNo" />
+    </form>
+
+    <script>
+        var form = document.getElementById('empForm');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const data = {
+                id: 200,
+                firstName: 'hello',
+                lastName: 'world',
+                salary: 2000,
+                emailAddress: 'zys@abc.cm',
+                department: {
+                    id: 101,
+                    dptName: 'any',
+                    contactNo: 0000
+                }
+            }
+            try {
+                const res = await fetch('http://localhost:8787/all', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                console.log(res);
+            } catch (err) {
+                console.log(err);
+            }
+        });
+
+        function handleDptSubmit() {
+            fetch('url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify('data')
+            }).then((res) => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    </script>
+</body>
+
+</html>
